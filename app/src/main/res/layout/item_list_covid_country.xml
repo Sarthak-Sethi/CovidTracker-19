@@ -30,7 +30,4 @@
             android:text="12345"
             android:textSize="25sp"></TextView>
     </LinearLayout>
-
-
-
-</>
+</RelativeLayout>
