@@ -25,33 +25,60 @@ import com.example.covidtracker2019.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class HomeFragment extends Fragment {
-    private  TextView tvtotalconfirm,tvtotaldeath,tvtotalrecovered;
+    private TextView tvTotalConfirmed, tvTotalDeaths, tvTotalRecovered, tvLastUpdated;
     private ProgressBar progressBar;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        tvtotalconfirm = root.findViewById(R.id.txttotalconfirmed);
-        tvtotaldeath = root.findViewById(R.id.txttotaldeaths);
-        tvtotalrecovered = root.findViewById(R.id.txttotalRecovered);
+
+        // call view
+        tvTotalConfirmed = root.findViewById(R.id.tvTotalConfirmed);
+        tvTotalDeaths = root.findViewById(R.id.tvTotalDeaths);
+        tvTotalRecovered = root.findViewById(R.id.tvTotalRecovered);
+        tvLastUpdated = root.findViewById(R.id.tvLastUpdated);
         progressBar = root.findViewById(R.id.progress_circular_home);
+
+        // Action Bar title
+        getActivity().setTitle("Overview");
+
+        // call Volley
         getData();
+
         return root;
     }
 
+    private String getDate(long milliSecond){
+  
+        SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy hh:mm:ss aaa");
+
+        Calendar calendar= Calendar.getInstance();
+        calendar.setTimeInMillis(milliSecond);
+        return formatter.format(calendar.getTime());
+    }
+
     private void getData() {
-        RequestQueue queue= Volley.newRequestQueue(getActivity());
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+
         String url = "https://corona.lmao.ninja/v2/all";
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 progressBar.setVisibility(View.GONE);
+
                 try {
                     JSONObject jsonObject = new JSONObject(response.toString());
-                    tvtotalconfirm.setText(jsonObject.getString("cases"));
-                    tvtotaldeath.setText(jsonObject.getString("deaths"));
-                    tvtotaldeath.setText(jsonObject.getString("recovered"));
+
+                    tvTotalConfirmed.setText(jsonObject.getString("cases"));
+                    tvTotalDeaths.setText(jsonObject.getString("deaths"));
+                    tvTotalRecovered.setText(jsonObject.getString("recovered"));
+                    tvLastUpdated.setText("Last Updated"+"\n"+getDate(jsonObject.getLong("updated")));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -59,10 +86,11 @@ public class HomeFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-            progressBar.setVisibility(View.GONE);
-                Log.d("Error response",error.toString());
+                progressBar.setVisibility(View.GONE);
+                Log.d("Error Response", error.toString());
             }
-    });
-queue.add(stringRequest);
+        });
+
+        queue.add(stringRequest);
     }
 }

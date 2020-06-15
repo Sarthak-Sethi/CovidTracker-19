@@ -3,101 +3,92 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@android:color/black"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".ui.home.HomeFragment">
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:gravity="center"
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:textSize="22dp"
-            android:layout_marginBottom="24dp"
-            android:text="Corona Virus Cases \nGLOBALLY"
-            android:textColor="@android:color/white"
-            android:textAlignment="center"></TextView>
-
-        <TextView
-        android:id="@+id/txtlabeltotalconfirmed"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-condensed-light"
-        android:textSize="22dp"
-        android:text="Total Confirmed"
-        android:textColor="@android:color/white"
-        android:textAlignment="center"></TextView>
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txttotalconfirmed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-light"
-            android:text="1234566"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Coronavirus COVID-19\nGlobal Cases"
             android:textAlignment="center"
-            android:textColor="@color/orange"
-            android:textSize="30dp"
-            android:textStyle="bold"></TextView>
-
-
+            android:textColor="#fff"
+            android:textSize="24dp" />
 
         <TextView
-            android:id="@+id/txtlabeltotaldeaths"
+            android:id="@+id/tvLabelTotalConfirmed"
+            style="@style/LabelFontStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-light"
-            android:textSize="22dp"
+            android:text="Total Confirmed"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/tvTotalConfirmed"
+            style="@style/TotalFontStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTotalConfirmed"
+            tools:text="162387" />
+
+        <TextView
+            android:id="@+id/tvLabelTotalDeaths"
+            style="@style/LabelFontStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Total Deaths"
-            android:textColor="@android:color/white"
-            android:textAlignment="center"></TextView>
+            android:textColor="@color/colorTotalDeaths" />
 
         <TextView
-            android:id="@+id/txttotaldeaths"
+            android:id="@+id/tvTotalDeaths"
+            style="@style/TotalFontStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-light"
-            android:textSize="30dp"
-            android:text="556"
-            android:textStyle="bold"
-            android:textColor="@color/darkorange"
-            android:textAlignment="center"></TextView>
-
+            android:textColor="@color/colorTotalDeaths"
+            tools:text="75648" />
 
         <TextView
-            android:id="@+id/txtlabeltotalRecovered"
+            android:id="@+id/tvLabelTotalRecovered"
+            style="@style/LabelFontStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-light"
-            android:textSize="22dp"
             android:text="Total Recovered"
-            android:textColor="@android:color/white"
-            android:textAlignment="center"></TextView>
+            android:textColor="@color/colorTotalRecovered" />
 
         <TextView
-            android:id="@+id/txttotalRecovered"
+            android:id="@+id/tvTotalRecovered"
+            style="@style/TotalFontStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-light"
-            android:textSize="30dp"
-            android:text="789"
-            android:textStyle="bold"
-            android:textColor="@android:color/holo_green_dark"
-            android:textAlignment="center"></TextView>
+            android:textColor="@color/colorTotalRecovered"
+            tools:text="75938" />
+
+        <TextView
+            android:id="@+id/tvLastUpdated"
+            style="@style/LabelFontStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            tools:text="Last Updated\n Mon, 23 Mar 2020 1:20:30 PM" />
 
     </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progress_circular_home"
-        android:indeterminate="true"
-        android:layout_centerInParent="true"
-        android:indeterminateDrawable="@drawable/progress"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    </ProgressBar>
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/progress" />
 </RelativeLayout>

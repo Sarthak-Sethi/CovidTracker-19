@@ -17,9 +17,5 @@
         android:label="@string/title_country"
         tools:layout="@layout/fragment_country" />
 
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.covidtracker2019.ui.notifications.NotificationsFragment"
-        android:label="E-PASS"
-        tools:layout="@layout/fragment_notifications" />
+
 </navigation>
