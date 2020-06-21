@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#fff"
-            tools:text="China" />
+            tools:text="China is a dumb " />
     </LinearLayout>
 
     <LinearLayout

@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
 
         // call Volley
         getData();
-
+      //  Log.e("a",getArguments().getString("a"));
         return root;
     }
 
